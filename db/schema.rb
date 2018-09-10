@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20180906094531) do
 
-  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["password"], name: "index_admins_on_password", unique: true, using: :btree
   end
 
-  create_table "gym_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "gym_classes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "description"
     t.string   "name"
     t.integer  "gym_entity_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["gym_entity_id"], name: "index_gym_classes_on_gym_entity_id", using: :btree
   end
 
-  create_table "gym_entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "gym_entities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "phone"
     t.string   "email"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["user_id"], name: "index_gym_entities_on_user_id", using: :btree
   end
 
-  create_table "gym_locations", primary_key: ["gym_entity_id", "location"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "gym_locations", primary_key: ["gym_entity_id", "location"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "location",      null: false
     t.integer  "gym_entity_id", null: false
     t.datetime "created_at",    null: false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["gym_entity_id"], name: "index_gym_locations_on_gym_entity_id", using: :btree
   end
 
-  create_table "gym_ratings", primary_key: ["gym_entity_id", "user_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "gym_ratings", primary_key: ["gym_entity_id", "user_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "rating"
     t.integer  "gym_entity_id", null: false
     t.integer  "user_id",       null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["user_id"], name: "index_gym_ratings_on_user_id", using: :btree
   end
 
-  create_table "trainer_ratings", primary_key: ["trainer_id", "user_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "trainer_ratings", primary_key: ["trainer_id", "user_id"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "rating"
     t.integer  "trainer_id", null: false
     t.integer  "user_id",    null: false
@@ -73,7 +73,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["user_id"], name: "index_trainer_ratings_on_user_id", using: :btree
   end
 
-  create_table "trainers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "trainers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "rating"
     t.string   "city"
     t.string   "description"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20180906094531) do
     t.index ["user_id"], name: "index_trainers_on_user_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "fName"
     t.string   "lName"
     t.string   "email"
