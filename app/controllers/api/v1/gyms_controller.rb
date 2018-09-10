@@ -21,4 +21,13 @@ class Api::V1::GymsController < ApplicationController
   	 @gyms=GymEntity.where(:id => @gyms_id)
   	 json_response(@gyms)
   end 
+
+  def  name
+  	logger.debug("\n****************************testiiiiiiiiiiiing  Name  ****************************\n")
+  	logger.debug("#{params[:name]}  \n")
+  	@gyms=GymEntity.where("name like ?","%#{params[:name]}%")
+  	User.joins(:job).where("job_name like ? and name like ?","%Dummy%", "%Bzupnick")
+  	json_response(@gyms)
+  	
+  end
 end

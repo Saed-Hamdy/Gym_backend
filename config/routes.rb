@@ -2,21 +2,19 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      get 'trainer/area'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
-      get 'trainer/name'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
+      get 'access/login'
+      post 'access/attempt_login'
+      get 'access/logout'
+      get'access/menu'
       
     end
   end
+
+  # namespace :api do
+  #   namespace :v1 do
+  #     get 'trainers/index'
+  #   end
+  # end
 
   namespace :api do
     namespace :v1 do
@@ -24,13 +22,25 @@ Rails.application.routes.draw do
       get 'info/areas'
 
 
+      # trainer requests
+
+      get 'trainers/name'
+
+      resources :trainers
+
+      #gym requests
+
       #  area as params[:area]
       get 'gyms/area'
-      # get 'info/areas/{id}'
+      #  area as params[:name]
+      get 'gyms/name'
+
 
       resources :gyms do
         resources :classes
       end 
+
+
     end
   end
 
